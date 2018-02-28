@@ -22,12 +22,3 @@ This is the PN custom eShop
 
 ### Footnotes
 none
-
-# Developer and general thanks list
-
-### Developers:
-![RedDuckss' avatar](https://avatars1.githubusercontent.com/u/27011796?s=40&v=4)&nbsp;&nbsp;[RedDuckss](https://github.com/RedDuckss) | Lead Developer
-<br><br>
-![SuperMarioDaBom's avatar](https://avatars2.githubusercontent.com/u/19657053?s=40&v=4)&nbsp;&nbsp;[SuperMarioDaBom](https://github.com/SuperMarioDaBom) | Development
-<br><br>
-![superwhiskers' vatar](https://avatars2.githubusercontent.com/u/10212424?s=40&v=4)&nbsp;&nbsp;[superwhiskers](https://github.com/superwhiskers) | Development
