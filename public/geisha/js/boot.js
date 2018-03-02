@@ -11129,7 +11129,7 @@ window.jQuery && jQuery.extend({
                     alert(b)
                     b = encodeURIComponent($(a.el).val());
                     alert(b)
-                    wood.client.redirectTo("https://geisha-wup.cdn.nintendo.net/geisha/#shelf?searchType=both&freeword=zelda")
+                    wood.client.redirectTo("#shelf?searchType=both&freeword=zelda")
                 }
             })
         },
