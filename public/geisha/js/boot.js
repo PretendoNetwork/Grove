@@ -1,3 +1,7 @@
+window.onerror = function(error, url, line) {
+    alert(error)
+};
+
 (function(a, b) {
     function c(p) {
         var a = p.length,
