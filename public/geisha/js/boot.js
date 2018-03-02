@@ -6322,9 +6322,9 @@ window.jQuery && jQuery.extend({
             if (Wood.isWiiU) {
                 var c;
                 c = "string" === typeof a ? parseInt(a, 10) : a;
-                Wood.Analytics.sendError(c);
+                //Wood.Analytics.sendError(c);
                 b ? wiiuErrorViewer.openByCodeAndMessage(c, b) : wiiuErrorViewer.openByCode(c)
-            } else Wood.Analytics.sendError(a), b ? Wood.ErrorViewer.showAlert(a + "\n\n" + b) : Wood.ErrorViewer.showAlert(a)
+            } //else Wood.Analytics.sendError(a), b ? Wood.ErrorViewer.showAlert(a + "\n\n" + b) : Wood.ErrorViewer.showAlert(a)
         },
         showAlert: function(a) {
             window.alert(a)
@@ -8328,7 +8328,7 @@ window.jQuery && jQuery.extend({
 (function() {
     Wood.IndexBeacon = {
         boot01_01: function() {
-            Wood.Analytics.saveAppJumpAttr($.url().param())
+            //Wood.Analytics.saveAppJumpAttr($.url().param())
         },
         boot01_02: function() {},
         boot01_03: function() {},
@@ -8592,6 +8592,8 @@ window.jQuery && jQuery.extend({
     var c = "undefined" !== typeof wiiuSystemSetting ? !0 : !1,
         e = a.localStorage,
         d = a.sessionStorage;
+    
+    /*
     b.AnalyticsUtil = {
         isWiiU: c,
         isReferrerTop: function() {
@@ -8658,7 +8660,10 @@ window.jQuery && jQuery.extend({
             return e.getItem("lang") || "unknown"
         }
     }
+    */
 })(window);
+
+/*
 (function(a) {
     function b() {
         this.dataLayer = a.dataLayer || [];
@@ -8837,6 +8842,10 @@ window.jQuery && jQuery.extend({
     };
     c.Analytics = new b
 })(window);
+*/
+
+
+
 (function() {
     Wood.Model.Base = Backbone.Model.extend({
         defaults: function() {
@@ -11104,6 +11113,7 @@ window.jQuery && jQuery.extend({
             $(a.el).change(function() {
                 if ("" !== $(a.el).val()) {
                     var b = wood.client.getSessionStorage();
+                    alert(b.getItem("platform[]"))
                     b.removeItem("searchType");
                     b.removeItem("platform[]");
                     b.removeItem("genre[]");
@@ -11112,8 +11122,10 @@ window.jQuery && jQuery.extend({
                     b.removeItem("price_max");
                     b.removeItem("device[]");
                     b.setItem("freeword", $(a.el).val());
+                    alert(b)
                     b = encodeURIComponent($(a.el).val());
-                    wood.client.redirectTo("#shelf?searchType=both&freeword=" + b)
+                    alert(b)
+                    wood.client.redirectTo("https://geisha-wup.cdn.nintendo.net/geisha/#shelf?searchType=both&freeword=zelda")
                 }
             })
         },
@@ -11146,7 +11158,7 @@ window.jQuery && jQuery.extend({
         },
         afterRun: function() {},
         preparePage: function(a) {
-            Wood.Analytics.addFromAttr("(top-page)").sendVirtualPV("VP_Top");
+            //Wood.Analytics.addFromAttr("(top-page)").sendVirtualPV("VP_Top");
             a.initPurchaseInfo();
             a.initCardInfo();
             a.enableUserOperation()
