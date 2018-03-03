@@ -1,5 +1,6 @@
 window.onerror = function(error, url, line) {
     alert(error)
+    alert(line)
 };
 
 (function(a, b) {
