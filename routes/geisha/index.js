@@ -9,8 +9,6 @@ const DOMAIN_WHITELIST = [
     'kanzashi-movie-qa.wup.shop.pretendo.cc'
 ];
 
-console.log(getWhiteListedDomains())
-
 routes.get('/', (request, response) => {
     response.set('X-Nintendo-WhiteList', getWhiteListedDomains()); 
 
