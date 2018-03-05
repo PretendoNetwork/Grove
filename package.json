@@ -7,6 +7,7 @@
     "colors": "^1.1.2",
     "express": "^4.16.2",
     "express-subdomain": "^1.0.5",
+    "fs-extra": "^5.0.0",
     "got": "^8.0.3",
     "morgan": "^1.9.0"
   },

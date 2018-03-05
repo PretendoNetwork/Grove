@@ -7,7 +7,7 @@
 let port = 80,
     debug = require('./debugger'),
     path = require('path'),
-    fs = require('fs'),
+    fs = require('fs-extra'),
     express = require('express'),
     subdomain = require('express-subdomain'),
     colors = require('colors'),
@@ -52,14 +52,24 @@ router.use('/geisha', ROUTES.GEISHA);
 kanzashi_router.get('/i/rep.png', (request, response) => {
     response.sendFile(__dirname + '/public/geisha/image/rep.png');
 });
+kanzashi_router.get('/i/:game/:image', (request, response) => {
+    if (fs.pathExistsSync('./cdn/images/' + request.params.game + '/' + request.params.image + '.jpg')) {
+        response.sendFile(__dirname + '/cdn/images/' + request.params.game + '/' + request.params.image + '.jpg');
+    } else {
+        response.sendStatus(404);
+    }
+});
 samurai_router.get('/samurai/ws/:region/directories', (request, response) => {
-    response.json(JSON.parse(fs.readFileSync('./example_games.json').toString()));
+    response.set('Content-Type', 'application/json');
+    response.set('Access-Control-Allow-Origin', '*');
+
+    response.send(fs.readFileSync('./games.json').toString());
 });
 samurai_router.get('/samurai/ws/US/directory/:thing', (request, response) => {
-    response.json(JSON.parse(fs.readFileSync('./dir.json').toString()));
+    response.send(fs.readFileSync('./dir.json').toString());
 });
 samurai_router.get('/samurai/ws/US/news', (request, response) => {
-    response.json(JSON.parse(fs.readFileSync('./news.json').toString()));
+    response.send(fs.readFileSync('./news.json').toString());
 });
 
 // 404 handler

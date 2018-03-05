@@ -2,8 +2,8 @@
     "directories": {
         "directory": [
             {
-                "name": "The Legend of Zelda™: Breath of the Wild",
-                "banner_url": "https://kanzashi-wup.cdn.nintendo.net/i/e376763b4374a1239d5769bbaa89e7f1e843faa7b396e58d291ce05509c21811.jpg",
+                "name": "Splatoon 2",
+                "banner_url": "http://kanzashi-wup.cdn.pretendo.cc/i/splatoon2/banner",
                 "banner_width": 488,
                 "banner_height": 252,
                 "contents": {
@@ -69,8 +69,8 @@
                                 "name": "The Legend of Zelda™: Breath of the Wild",
                                 "id": 20010000026167,
                                 "product_code": "WUP-N-ALZE",
-                                "icon_url": "https://kanzashi-wup.cdn.nintendo.net/i/f29fc211b28a5d8e8d8a4a0cd30b14fcfc2aaa6158d48839e9b90d95ab142dc0.jpg",
-                                "banner_url": "https://kanzashi-wup.cdn.nintendo.net/i/5cfcba0a6b06ce37bd21d75c13efe03f27139a06f807515b7a12a9228fc27a51.jpg",
+                                "icon_url": "http://kanzashi-wup.cdn.pretendo.cc/i/splatoon2/icon",
+                                "banner_url": "http://kanzashi-wup.cdn.pretendo.cc/i/splatoon2/banner2",
                                 "new": false
                             },
                             "index": 1
