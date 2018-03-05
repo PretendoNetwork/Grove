@@ -4,16 +4,18 @@
 ///                                                            ///
 //////////////////////////////////////////////////////////////////
 
-let port = 8080,
+let port = 80,
     debug = require('./debugger'),
     path = require('path'),
+    fs = require('fs'),
     express = require('express'),
     subdomain = require('express-subdomain'),
     colors = require('colors'),
     morgan = require('morgan'),
     app = express(),
     router = express.Router(),
-    kanzashi_router = express.Router();
+    kanzashi_router = express.Router(),
+    samurai_router = express.Router();
 
 let server_debugger = new debug('Server');
 
@@ -41,11 +43,23 @@ app.use(subdomain('geisha-wup.cdn', router));
 server_debugger.log('Creating \'kanzashi-wup.cdn\' subdomain');
 app.use(subdomain('kanzashi-wup.cdn', kanzashi_router));
 
+server_debugger.log('Creating \'samurai-wup.cdn\' subdomain');
+app.use(subdomain('samurai-wup.cdn', samurai_router));
+
 // Setup routes
 server_debugger.log('Applying imported routes');
 router.use('/geisha', ROUTES.GEISHA);
 kanzashi_router.get('/i/rep.png', (request, response) => {
     response.sendFile(__dirname + '/public/geisha/image/rep.png');
+});
+samurai_router.get('/samurai/ws/:region/directories', (request, response) => {
+    response.json(JSON.parse(fs.readFileSync('./example_games.json').toString()));
+});
+samurai_router.get('/samurai/ws/US/directory/:thing', (request, response) => {
+    response.json(JSON.parse(fs.readFileSync('./dir.json').toString()));
+});
+samurai_router.get('/samurai/ws/US/news', (request, response) => {
+    response.json(JSON.parse(fs.readFileSync('./news.json').toString()));
 });
 
 // 404 handler
