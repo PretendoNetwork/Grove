@@ -21,7 +21,7 @@ const DOMAIN_WHITELIST = [
 routes.get('/', (request, response) => {
     response.set('X-Nintendo-WhiteList', getWhiteListedDomains()); 
 
-    response.end(fs.readFileSync(path.join(__dirname, 'views/eshop.html')));
+    response.end(fs.readFileSync(path.join(__dirname, 'views/testing2.html')));
 });
 
 /**
@@ -29,7 +29,7 @@ routes.get('/', (request, response) => {
  * Replacement for: https://geisha-wup.cdn.nintendo.net/geisha/message/messages-LANG_REGION.xml
  * Description: The language file used by the eShop
  */
-routes.get('/message/messages-en_US.xml',  (request, response) => {
+routes.get(['/message/messages-en_US.xml','/message/messages-nl.xml'],  (request, response) => {
     response.set('Content-Type', 'text/xml');
 
     response.end(fs.readFileSync(path.join(__dirname, 'storage/index.xml')));

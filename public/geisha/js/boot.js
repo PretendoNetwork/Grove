@@ -1,7 +1,7 @@
 window.onerror = function(error, url, line) {
     alert(error)
     alert(line)
-};
+}; //MODIFIED
 
 (function(a, b) {
     function c(p) {
@@ -7196,10 +7196,12 @@ window.jQuery && jQuery.extend({
         endStartUp: function() {
             Wood.log("(wood.client) endStartUp(false)");
             this.isWiiU() && wiiuBrowser.endStartUp && wiiuBrowser.endStartUp(!1)
+            alert('endStartup');//MODIFIED
         },
         endStartUpWithBGM: function() {
             Wood.log("(wood.client) endStartUp(true)");
             this.isWiiU() && wiiuBrowser.endStartUp && wiiuBrowser.endStartUp(!0)
+            alert('endStartupwithBGM');//MODIFIED
         },
         isInBoot: function() {
             return this.is_in_boot

@@ -10,16 +10,23 @@
     <body>
         <img src="http://kanzashi-wup.cdn.pretendo.cc/i/rep.png">
         <a href="http://kanzashi-wup.cdn.pretendo.cc/i/rep.png">http://kanzashi-wup.cdn.pretendo.cc/i/rep.png</a>
-
+        <div id="output">
+            this is a test
+        </div>
+        <script type="text/javascript" src="js/testing.js" onerror="wiiuErrorViewer.openByCode(1119000);wiiuBrowser.jumpToHomeButtonMenu()"></script>
         <script type="text/javascript" src="js/boot.js" onerror="wiiuErrorViewer.openByCode(1119000);wiiuBrowser.jumpToHomeButtonMenu()"></script>
         <script type="text/javascript" src="js/environment.js" onerror="wiiuErrorViewer.openByCode(1119000);wiiuBrowser.jumpToHomeButtonMenu()"></script>
         <script lang="javascript">
             $(document).ready(function() {
-                Wood.lap("document ready");
+                //these two are required to run boot.js with either of them missing the loading screen
+                //will not go away BUT js will run. without boot.js loaded js will not run.
+                //boot.js somehow enables JS (filename is not the trigger)
                 new Wood.Controller.Index;
                 Backbone.history.start({});
 
-                alert('Connected to a local copy of the eShop');
+                alert('wood api loaded');
+                alert(test); //var from testing.js
+                alert(testFunc()); //function from testing.js
             });
         </script>
     </body>
