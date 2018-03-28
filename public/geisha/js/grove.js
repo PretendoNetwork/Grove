@@ -1,45 +1,87 @@
-/* wiiu native objects docs:
-wiiuBrowser:
-.endStartUp(arg1) arg1 boolean : unknown use;
-wiiuSystemSetting:
-.getEShopInitialized();
-*/
+/* dev code */
+window.onerror = function(error, url, line) {
+    alert(error + " AT LINE: " + line); 
+};
 
 /* setup Grove */
 var Grove = {
-    Modules: {
-        Client: {}
-    }
-};
-
-/* constants */
-
-Grove.constants = {
-    dev: true
+    Client: {},
+    Debugging: {},
+    Utils: {}
 }
 
-/* wood core */
-
-Grove.log = function (content) {
-    if (Grove.constants.dev) alert(content);
+/* constants and variables*/
+Grove.Constants = {
+    dev: true,
+    isWiiU: typeof wiiuSystemSetting !== "undefined"
+}
+Grove.Vars = {
+    home_button_enabled: true,
+    power_button_enabled: true
 };
 
-Grove.isWiiU = typeof wiiuSystemSetting !== "undefined";
-/* setup Wood client */
+/* Utilities module */
+/* contains utility functions to use multiple times */
 
-Grove.Modules.Client.Boot = {
+Grove.Utils.isWiiU = function () {
+    return Grove.Constants.isWiiU;
+}
+
+/* Debugging module */
+/* handles all error and logging of Grove */
+
+Grove.Debugging = {
+    log: function (content, isAlert) {
+        if (Grove.Constants.dev && isAlert) {
+            alert(content);
+        }
+        console.log(content);
+    },
+    showError: function () {
+        //empty
+    }
+}
+
+/* Client module */
+/* Handles client interaction */
+
+Grove.Client.UI = {
     endStartUp: function() {
-        Grove.log("force stopped startup");
-        Grove.isWiiU && wiiuBrowser.endStartUp && wiiuBrowser.endStartUp(false);
+        Grove.Debugging.log("Removed loading screen");
+        if (Grove.Utils.isWiiU() && wiiuBrowser.endStartUp) wiiuBrowser.endStartUp(false);
     },
     endStartUpWithBGM: function() {
-        Grove.log("stopped startup");
-        Grove.isWiiU && wiiuBrowser.endStartUp && wiiuBrowser.endStartUp(true);
+        Grove.Debugging.log("Removed loading screen with music");
+        if (Grove.Utils.isWiiU() && wiiuBrowser.endStartUp) wiiuBrowser.endStartUp(true);
+    },
+    enableHomeButton: function () {
+        if (Grove.Utils.isWiiU() && Grove.Vars.home_button_enabled === false) {
+            wiiuBrowser.lockHomeButtonMenu(false);
+            Grove.Vars.home_button_enabled = true;
+        }
+    },
+    disableHomeButton: function () {
+        if (Grove.Utils.isWiiU() && Grove.Vars.home_button_enabled === true) {
+            wiiuBrowser.lockHomeButtonMenu(true);
+            Grove.Vars.home_button_enabled = false;
+        }
+    },
+    enablePowerButton: function () {
+        if (Grove.Utils.isWiiU() && Grove.Vars.power_button_enabled === false) {
+            wiiuBrowser.lockPowerButton(false);
+            Grove.Vars.power_button_enabled = true;
+        }
+    },
+    disablePowerButton: function () {
+        if (Grove.Utils.isWiiU() && Grove.Vars.power_button_enabled === true) {
+            wiiuBrowser.lockPowerButton(true);
+            Grove.Vars.power_button_enabled = false;
+        }
     }
-};
+}
 
-/* startup */
+/* Grove init */
 Grove.init = function () {
-    Grove.Modules.Client.Boot.endStartUpWithBGM();
-    Grove.log('initialized grove');
+    Grove.Client.UI.endStartUpWithBGM();
+    Grove.Debugging.log('Pretendo Grove has been loaded.', true);
 }
