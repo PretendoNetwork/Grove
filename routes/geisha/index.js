@@ -21,7 +21,7 @@ const DOMAIN_WHITELIST = [
 routes.get('/', (request, response) => {
     response.set('X-Nintendo-WhiteList', getWhiteListedDomains()); 
 
-    response.end(fs.readFileSync(path.join(__dirname, 'views/testing2.html')));
+    response.end(fs.readFileSync(path.join(__dirname, 'views/testing.html')));
 });
 
 /**
