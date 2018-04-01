@@ -7,7 +7,10 @@ window.onerror = function(error, url, line) {
 var Grove = {
     Client: {},
     Debugging: {},
-    Utils: {}
+    Utils: {},
+    Backend: {
+        Titles: {}
+    }
 }
 
 /* constants and variables*/
@@ -39,6 +42,61 @@ Grove.Debugging = {
     },
     showError: function () {
         //empty
+    }
+}
+
+/* Backend Downloading module */
+/* Handles titles */
+
+Grove.Backend.Titles = {
+    registerTitleDownloadTask: function (titleId, titleVer) {
+        wiiuEC.registerTitleDownloadTask(titleId, titleVer);
+    },
+    registerPatchTitleDownloadTask: function (titleId) {
+        wiiuEC.registerPatchTitleDownloadTask(titleId);
+    },
+    registerAocDownloadTask: function (titleId, titleVer, jsonString) {
+        return wiiuEC.registerAocDownloadTask(titleId,titleVer,jsonString /* ??? */);
+        /* jsonString: 
+        
+        '{"indexes":[' + dl_obj[i].content_index + ']}'
+        
+        */
+        /*
+        res: {
+            error: {
+                code: Number
+            }
+        }
+        */
+    },
+    getDownloadTaskList: function () {
+        return wiiuEC.getDownloadTaskListState();
+        /*
+        res: {
+            remainingTaskNum,
+            ...
+        }
+        */
+    },
+    getTitleInfo: function (titleId, titleVer) {
+        return wiiuEC.getTitleInstallInfo(titleId, titleVer);
+        /*
+        res: {
+            storageSize,
+            downloadMedia,
+            installSize,
+            ...
+        }
+        */
+    },
+    ticketDownload: function (ticket) {
+        wiiuEC.ticketDownloadSync(ticket); /* ticketId returned from:
+         ninjaBase + 'ws/' + country + '/title/' + title_id +'/aocs/!purchase?lang='+lang 
+         */
+    },
+    needSystemUpdate: function () {
+        return wiiuEC.needsSystemUpdate(); /* returns boolean */
     }
 }
 
