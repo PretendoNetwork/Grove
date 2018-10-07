@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ."
+  },
   "dependencies": {
     "colors": "^1.1.2",
+    "eslint": "^5.6.1",
     "express": "^4.16.2",
     "express-subdomain": "^1.0.5",
     "fs-extra": "^5.0.0",
@@ -12,9 +16,6 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC"
 }

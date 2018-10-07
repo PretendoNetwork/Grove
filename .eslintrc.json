@@ -1,0 +1,36 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es6": true
+	},
+	"parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+		"no-console": "off",
+		"prefer-const": "error",
+		"no-var": "error",
+		"linebreak-style": "off",
+		"one-var": [
+			"error",
+			"never"
+		],
+        "indent": [
+            "error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
