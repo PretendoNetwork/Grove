@@ -1,0 +1,17 @@
+{
+	"env": {
+		"browser": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 5
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"prefer-const": "off",
+		"no-var": "off"
+	},
+	"globals": {
+		"wiiuBrowser": "readonly",
+		"wiiuEC": "readonly"
+	}
+}

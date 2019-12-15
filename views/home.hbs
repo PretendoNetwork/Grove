@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<title>Pretendo eShop</title>
+		<link rel="stylesheet" href="/css/minified/index.css">
+	</head>
+	<body>
+		<h1>This is the grove testing environment</h1>
+		<h2>All new additions to the grove API should be tested here. This is also the place to mess with wiiu native classes like wiiuSystemSettings</h2>
+
+		<script type="text/javascript" src="/js/grove.js" onerror="wiiuErrorViewer.openByCode(1119000);wiiuBrowser.jumpToHomeButtonMenu()"></script>
+		<script lang="javascript">
+			Grove.init();
+		</script>
+		<button onclick="location.reload();">Refresh</button>
+		<br>
+		<button onclick="getGlobals();">Get Globals</button>
+		<button onclick="getGlobalMethods('wiiuEC');">Get global methods</button>
+		<button onclick="alert(JSON.stringify(wiiuDevice.getAocContentIndexList('00050000')));">Test method</button>
+		<button onclick="alert(JSON.stringify(wiiuEC.getDownloadTaskStateForDebug()));">Test debug method</button>
+		<br>
+		<button onclick="Grove.enableHomeButton();">Enable home</button>
+		<button onclick="Grove.disableHomeButton();">Disable home</button>
+		<br>
+		<!--
+		<button onclick="Grove.requestTicket('1633213454495675'); Grove.installTitle('000500001016E100', '0');">Install Shovel Knight</button>
+		<button onclick="Grove.requestTicket('1504125632659492'); Grove.installTitle('00050000101999ff', '0');">Install Nintendont</button>
+		<br>
+		-->
+		<button onclick="Grove.requestTicket('1633213454495676'); Grove.installTitle('0005000010102172', '1');">Install RetroArch</button>
+		<button onclick="Grove.requestTicket('1504125632659492'); Grove.installTitle('00050000101999ff', '1');">Install Nintendont</button>
+
+		<script>
+			function getGlobals() {
+				if (Object.keys) {
+					var _wiiuglobals = [];
+					var globals = Object.keys(window);
+
+					for (var i=0; i<=globals.length; i++) {
+						var global = globals[i];
+						if (global && global.slice) {
+							const prefix = global.slice(0, 4);
+							if (prefix == 'wiiu') {
+								_wiiuglobals.push(global);
+							}
+						}
+					}
+
+					alert(_wiiuglobals);
+				} else {
+					alert('Object.keys is not defined');
+				}
+			}
+
+			function getGlobalMethods(global) {
+				if (!global) global = 'wiiu';
+				global = window[global];
+
+				if (global) {
+					var prototype = Object.getPrototypeOf(global);
+					var members = Object.getOwnPropertyNames(prototype);
+
+					alert(members);
+				} else {
+					alert('Global not found');
+				}
+			}
+
+			function getMethodSource(global, method) {
+				global = window[global];
+
+				if (global) {
+					alert(typeof global[method].arguments)
+				} else {
+					alert('Global not found');
+				}
+			}
+		</script>
+
+		<style>
+			button {
+				width: 250px;
+				height: 100px;
+				font-size: 25px;
+			}
+		</style>
+	</body>
+</html>
+
+<!--
+0005000010105700
+5052525441524348
+-->
