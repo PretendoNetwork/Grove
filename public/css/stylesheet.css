@@ -1,10 +1,12 @@
 html {
-    height: 480px;
-    width: 854px;
+    height: 100%;
+    width: 100%;
     overflow-x: hidden;
 }
 
 body {
+	height: 100%;
+    width: 100%;
     background-color: #ffffff;
     margin: 0px 50px auto;
     font-family: 'Roboto', sans-serif;
