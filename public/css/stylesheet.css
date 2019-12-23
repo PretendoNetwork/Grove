@@ -1,14 +1,12 @@
 html {
-    height: 100%;
-    width: 100%;
+    height: 720px;
+    width: 1280px;
     overflow-x: hidden;
 }
 
 body {
-	height: 100%;
-    width: 100%;
     background-color: #ffffff;
-    margin: 0px 50px auto;
+    margin: 0px 125px auto;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -37,14 +35,23 @@ body {
 
 /* Header */
 
-.header-container .logo {
+.header-container .logo-img {
     position: absolute;
     top: 15px;
     left: 10px;
     display: block;
+    height: 32px;
+    width: 32px;
+}
+
+.header-container .logo-txt {
+    position: absolute;
+    top: 8px;
+    left: 55px;
+    display: block;
     font-size: 18px;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512da8;
 }
 
 .header-container .acct-icon {
@@ -61,7 +68,7 @@ body {
     background-size: contain;
 }
 
-.header-container .acct-drop {
+.header-container .acct-btn {
     position: absolute;
     top: 20px;
     right: 52px;
@@ -76,12 +83,41 @@ body {
     background-size: 24px;
 }
 
+.header-container .acct-menu {
+    position: absolute;
+    top: 55px;
+    right: 60px;
+    z-index: 1;
+    display: none;
+    height: fit-content;
+    width: 100px;
+    padding: 0px 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-container .acct-menu button {
+    margin: none;
+    padding: 15px 25px;
+    padding-left: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: normal;
+    color: #616161;
+    background-position: 5px 15px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
 /* Section Layouts */
 
 h1.featured-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512da8;
 }
 
 .section-container {
@@ -108,8 +144,8 @@ h1.featured-title {
     padding: 8px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #7e57c2;
-    font-size: 14px;
+    background-color: #512da8;
+    font-size: 16px;
     font-weight: normal;
     color: #f5f5f5;
 }
@@ -120,16 +156,16 @@ h1.featured-title {
 
 h1.title {
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512da8;
 }
 
 h2.subtitle {
-    margin-left: 10px;
-    font-size: 16px;
+    margin-left: 39px;
+    font-size: 18px;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512da8;
 }
 
 .spacer {
@@ -145,14 +181,14 @@ h2.subtitle {
 }
 
 .disp-card {
-    margin: 15px 0px auto;
+    margin: 15px 0 auto;
     padding: 25px 35px;
     border-radius: 10px;
     background-color: #f5f5f5;
 }
 
 .disp-app {
-    margin: 30px 0px auto;
+    margin: 45px 0px auto;
     padding: none;
     background-color: transparent;
 }
@@ -194,15 +230,15 @@ h2.subtitle {
 }
 
 .disp h1 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512da8;
 }
 
 .disp p {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
-    color: #8e8e8e;
+    color: #616161;
 }
 
 .disp button {
@@ -211,8 +247,8 @@ h2.subtitle {
     padding-left: 40px;
     border: none;
     border-radius: 5px;
-    background-color: #7e57c2;
-    font-size: 14px;
+    background-color: #512da8;
+    font-size: 16px;
     font-weight: normal;
     color: #f5f5f5;
 }
@@ -223,14 +259,123 @@ h2.subtitle {
 
 .disp .dwl-btn {
     background-image: url('../assets/icons/white/download.svg');
-    background-position: 8px 6px;
+    background-position: 9px 7px;
     background-repeat: no-repeat;
     background-size: 24px;
 }
 
 .disp .inf-btn {
     background-image: url('../assets/icons/white/more.svg');
-    background-position: 8px 6px;
+    background-position: 9px 7px;
     background-repeat: no-repeat;
     background-size: 24px;
+}
+
+/* Information Modal */
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    margin: 100px auto;
+    padding: 15px;
+    height: fit-content;
+    width: 80%;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.modal-content .top {
+    height: fit-content;
+    width: 100%;
+}
+
+.modal-content .top table {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-content .top table .app-img {
+    height: 100%;
+    width: 15%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal-content .top table .app-img img{
+    display: block;
+    height: 135px;
+    width: 135px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.modal-content .top table .app-cont{
+    height: 100%;
+    width: 85%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.modal-content .top table .app-cont h1{
+    font-size: 22px;
+    font-weight: bold;
+    color: #512da8; 
+}
+
+.modal-content .top table .app-cont button {
+    margin: none;
+    padding: 8px 20px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #512da8;
+    font-size: 16px;
+    font-weight: normal;
+    color: #f5f5f5;
+    background-position: 9px 7px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+.modal-content .top table .app-cont button:hover {
+    background-color: #673ab7;
+}
+
+.modal-content .bottom {
+    height: fit-content;
+    width: 100%;
+}
+
+.modal-content .bottom h1{
+    font-size: 20px;
+    font-weight: bold;
+    color: #512da8; 
+}
+
+.modal-content .bottom p {
+    font-size: 18px;
+    font-weight: normal;
+    color: #424242;
+}
+
+.modal .divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 15px 0px auto;
+    padding: none;
+    background-color: #8e8e8e;
 }

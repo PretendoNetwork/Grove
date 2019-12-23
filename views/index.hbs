@@ -13,11 +13,16 @@
 		Grove.init();
 	</script>
 </head>
-<body>
+<body id="body">
 	<div class="header-container">
-		<h1 class="logo">Pretendo eShop</h1>
+		<img class="logo-img" src="/assets/logo.png">
+		<h1 class="logo-txt">eShop</h1>
 		<div class="acct-icon" style="background-image: url('https://via.placeholder.com/150');"></div>
-		<button class="acct-drop"></button>
+		<button class="acct-btn" onclick="toggleMenu()"></button>
+		<div class="acct-menu" id="acctMenu">
+			<button style="background-image: url('/assets/icons/styled/person.svg')">Account</button>
+			<button style="background-image: url('/assets/icons/styled/settings.svg')">Settings</button>
+		</div>
 	</div>
 	<div class="spacer" style="height: 25px;"></div>
 	<div class="body-container">
@@ -38,7 +43,7 @@
 							</p>
 						</div>
 						<button class="dwl-btn">Install</button>
-						<button class="inf-btn">More</button>
+						<button class="inf-btn" id="modal_example">More</button>
 					</td>
 				</tr>
 			</table>
@@ -156,5 +161,36 @@
 		<div class="spacer" style="height: 50px;"></div>
 	</div>
 </body>
-<script src="/js/sectionHandler.js"></script>
+<div class="modal" id="info-modal">
+	<div class="modal-content">
+		<div class="top" id="add-border">
+			<table id="add-border">
+				<tr>
+					<td class="app-img" id="add-border">
+						<img src="https://via.placeholder.com/150">
+					</td>
+					<td class="app-cont" id="add-border">
+						<h1>Steam</h1>
+						<button style="background-image: url('/assets/icons/white/download.svg')">Download</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="divider"></div>
+		<div class="bottom">
+			<h1>Description</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sit amet felis vel bibendum. Nunc consequat turpis vel sapien tincidunt, ac 
+				venenatis orci maximus. Nunc tincidunt efficitur eros. Maecenas eget bibendum ipsum, et rutrum nisl. Etiam lobortis congue sollicitudin. Sed dictum 
+				turpis id risus porttitor, quis viverra enim hendrerit. Nullam rutrum sem mi, at semper massa imperdiet eu. Proin viverra, nisi id dignissim sagittis, 
+				ligula ante rhoncus sem, vel vestibulum dui magna non orci. Vestibulum id mollis metus. Aenean condimentum erat vel velit tincidunt, sit amet 
+				pellentesque augue finibus. Nullam ultrices, tellus eu tempor tempor, neque leo faucibus leo, nec congue risus sem in sem. Nam vulputate eget enim 
+				vitae porta. 
+			</p>
+			<h1>Screenshots</h1>
+
+		</div>
+	</div>
+</div>
+<script src="/js/frontend.js"></script>
 </html>
